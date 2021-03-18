@@ -6,6 +6,16 @@ namespace SkillBoxRandomHome
     {
         static void Main(string[] args)
         {
+            static void Clear()
+            {
+                Console.Clear();
+            }
+            static void Delay()
+            {
+                Console.ReadLine();
+            }
+
+
             #region ТЗ
    
             // Подумать над возможностью реализации разных уровней сложности.
@@ -17,12 +27,12 @@ namespace SkillBoxRandomHome
 
             Console.Write("Привет!\n" +
                           "Хочешь сыграть с Димси в игру да/нет? "); var DimsyChange = Console.ReadLine();      // реализация игры с компьютером 
-            Console.Clear();                                                                                   // очистка конслои
+            Clear();                                                                                           // очистка конслои
 
             if (DimsyChange == "да")                                                                            // условие да, выбор игры с компьютером ДИМСИ
             {
                 Console.Write("Напишите свой ник: "); var UserName = Console.ReadLine();                        // ввод ника игрока
-                Console.Clear();                                                                               // очистка консоли
+                Clear();                                                                                       // очистка консоли
 
                 var gameNumber = ran.Next(12, 120);                                                             // рандомное число для расчета
                 var Dimsy = "Димси";                                                                           // ник для бота 
@@ -30,8 +40,8 @@ namespace SkillBoxRandomHome
 
                 Console.WriteLine("Привет {0} и {1}", UserName, Dimsy);                                         // сообщение о приветствие игрока и бота
                 Console.WriteLine("Ваше случайное число:= {0}", gameNumber);                                   // вывод случайного числа
-                Console.ReadKey();                                                                            // ожидание ввода от пользователя
-                Console.Clear();                                                                             // очистка консоли 
+                Delay();                                                                                      // ожидание ввода от пользователя
+                Clear();                                                                                     // очистка консоли 
 
                 while (true)                                                                                    // старт цикла игры ПУНКТ 1.1
                 {
@@ -66,16 +76,16 @@ namespace SkillBoxRandomHome
                         Console.WriteLine("{0}, ты победил!", UserName);                                                        // вывод сообщения о победе пользователя
                         break;                                                                                                 // выйти из цикла игры с Димси ПУНКТ 1.1
                     }
-                    Console.Clear();                                                                                            // очистка конслои                                                                                           
+                    Clear();                                                                                                    // очистка конслои                                                                                           
                     whileStart++;                                                                                              // увеличение числа ХОДА на 1
                 }
             }
             else if (DimsyChange == "нет")
             {
                 Console.Write("Напишите свой ник: "); var UserOne = Console.ReadLine();
-                Console.Clear();
+                Clear();
                 Console.Write("Напишите свой ник: "); var UserTwo = Console.ReadLine();
-                Console.Clear();
+                Clear();
 
 
                 int gameNumber = ran.Next(12, 120);
@@ -83,7 +93,7 @@ namespace SkillBoxRandomHome
 
                 Console.WriteLine("Привет {0} и {1}", UserOne, UserTwo);
                 Console.WriteLine("Ваше случайное число:= {0}", gameNumber);
-                Console.Clear();
+                Clear();
 
                 while (true)
                 {
@@ -117,7 +127,7 @@ namespace SkillBoxRandomHome
 
                         break;
                     }
-                    Console.Clear();
+                    Clear();
 
                     Console.WriteLine("Сейчас рандомное число:= {0}.\t" +
                                       "Ход номер {1}", gameNumber, whileStart);
@@ -138,7 +148,7 @@ namespace SkillBoxRandomHome
                             case "да":
                                 gameNumber = ran.Next(12, 120);
                                 whileStart = 1;
-                                Console.Clear();
+                                Clear();
                                 continue;
                             case "нет":
                                 break;
@@ -149,7 +159,7 @@ namespace SkillBoxRandomHome
                         break;
                     }
                     whileStart++;
-                    Console.Clear();
+                    Clear();
                 }
             }// реализация игры с человеком
             else
@@ -157,7 +167,7 @@ namespace SkillBoxRandomHome
                 Console.WriteLine("Ошибка!!!\n" +
                                   "Ответ не определён...");
             }
-            Console.ReadKey();
+            Delay();
         }
     }
 }
