@@ -6,16 +6,60 @@ namespace SkillBoxRandomHome
     {
         static void Main(string[] args)
         {
+            ///<summary>Метод для вывода приветствия
+            ///</summary>
+            static void TextHyChange()
+            {
+                Console.Write("Привет!\n" +
+                          "Хочешь сыграть с Димси в игру да/нет? ");
+            }
+
+            /// <summary> Метод для вывода текущего значения числа и 
+            /// номера хода</summary>
+            static void NumberAndHod(int a, int b, string c, int d)
+            {
+                Console.WriteLine("Сейчас рандомное число =: {0}\t" +
+                                  "Ход номер {1}\n", a, b);
+                Console.WriteLine("{0}, вводит число от 1...4: {1} ", c, d);
+            }
+
+            ///<summary> Метод для вывода сообщения о приветсвиии игроков и рандомного числа
+            ///</summary>
+            static void TextHy(string player, string bot, int number)
+            {
+                Console.WriteLine("Привет {0} и {1}", player, bot);
+                Console.WriteLine("Ваше случайное число:= {0}", number);
+            }
+            
+            ///<summary> Метод для рассчета операций
+            ///</summary>
+            static int Operashion(int a,int b)
+            {
+                a -= b;
+                return a;
+            }
+
+            ///<summary> Метод для очистки консоли 
+            ///</summary>
             static void Clear()
             {
                 Console.Clear();
             }
+
+            /// <summary> Метод ожидания чёрного окна </summary>
+            ///
             static void Delay()
             {
-                Console.ReadLine();
+                Console.ReadKey();
             }
 
-
+            /// <summary> Метод для вывода строки об ошибке </summary>
+            /// 
+            static void TextOfError()
+            {
+                Console.WriteLine("Ошибка...");
+            }
+            
             #region ТЗ
    
             // Подумать над возможностью реализации разных уровней сложности.
@@ -24,9 +68,7 @@ namespace SkillBoxRandomHome
 
             #endregion
             Random ran = new Random();                                                                              // активация рандома 
-
-            Console.Write("Привет!\n" +
-                          "Хочешь сыграть с Димси в игру да/нет? "); var DimsyChange = Console.ReadLine();      // реализация игры с компьютером 
+            TextHyChange(); var DimsyChange = Console.ReadLine();                                                     // реализация игры с компьютером 
             Clear();                                                                                           // очистка конслои
 
             if (DimsyChange == "да")                                                                            // условие да, выбор игры с компьютером ДИМСИ
@@ -38,8 +80,7 @@ namespace SkillBoxRandomHome
                 var Dimsy = "Димси";                                                                           // ник для бота 
                 var whileStart = 1;                                                                           // инициалиция количества ходов
 
-                Console.WriteLine("Привет {0} и {1}", UserName, Dimsy);                                         // сообщение о приветствие игрока и бота
-                Console.WriteLine("Ваше случайное число:= {0}", gameNumber);                                   // вывод случайного числа
+                TextHy(UserName, Dimsy, gameNumber);                                                           // сообщение о приветствие игрока и бота, 
                 Delay();                                                                                      // ожидание ввода от пользователя
                 Clear();                                                                                     // очистка консоли 
 
@@ -59,10 +100,9 @@ namespace SkillBoxRandomHome
                             continue;                                                                          // продолжить проверять число от Димси с ПУНКТА 2.1
                         }
                     }
-                    Console.WriteLine("Сейчас рандомное число =: {0}\t" +
-                                      "Ход номер {1}\n", gameNumber, whileStart);                               // вывод имя бота и его случайного числа 
-                    Console.WriteLine("{0}, вводит число от 1...4: {1} ", Dimsy,DimsyRandom);                  // вывод числа от Димси
-                    gameNumber -= DimsyRandom;                                                                // операция вычитания от рандомного числа число от Димси
+                    NumberAndHod( gameNumber, whileStart, Dimsy, DimsyRandom);
+                    gameNumber = Operashion( gameNumber, DimsyRandom);                                                                 // операция вычитания от рандомного числа число от Димси
+
                     Console.WriteLine("Рандомное число =: {0}", gameNumber);                                 // текущее значение рандомного числа
                     if (gameNumber == 0)                                                                    // если после вычитания рандомное число равно нулю
                     {
@@ -70,7 +110,7 @@ namespace SkillBoxRandomHome
                         break;                                                                                 // выйти из цикла игры с Димси ПУНКТ 1.1
                     }
                     Console.Write("{0}, введи число от 1...4: ", UserName); var userTry = int.Parse(Console.ReadLine());        // вывод сообщения с именем пользователя с дальнейшим вводом числа от пользователя 
-                    gameNumber -= userTry;                                                                                     // операция вычитания от рандомного числа число от пользователя
+                    gameNumber = Operashion(gameNumber, userTry);                                                                                     // операция вычитания от рандомного числа число от пользователя
                     if (gameNumber == 0)                                                                                      // если после вычитания рандомное число равно нулю
                     {
                         Console.WriteLine("{0}, ты победил!", UserName);                                                        // вывод сообщения о победе пользователя
@@ -103,7 +143,7 @@ namespace SkillBoxRandomHome
                     if (userTry > 0 && userTry <= 4) gameNumber -= userTry;
                     else
                     {
-                        Console.WriteLine("Ошибка...");
+                        TextOfError();
                         break;
                     }
                     if (gameNumber == 0)
@@ -121,7 +161,7 @@ namespace SkillBoxRandomHome
                             case "нет":
                                 break;
                             default:
-                                Console.WriteLine("Ошибка...");
+                                TextOfError();
                                 break;
                         }
 
@@ -135,7 +175,7 @@ namespace SkillBoxRandomHome
                     if (userTry > 0 && userTry <= 4) gameNumber -= userTry;
                     else
                     {
-                        Console.WriteLine("Ошибка...");
+                        TextOfError();
                         break;
                     }
                     if (gameNumber == 0)
@@ -153,7 +193,7 @@ namespace SkillBoxRandomHome
                             case "нет":
                                 break;
                             default:
-                                Console.WriteLine("Ошибка...");
+                                TextOfError();
                                 break;
                         }
                         break;
@@ -164,8 +204,7 @@ namespace SkillBoxRandomHome
             }// реализация игры с человеком
             else
             {
-                Console.WriteLine("Ошибка!!!\n" +
-                                  "Ответ не определён...");
+                TextOfError();
             }
             Delay();
         }
