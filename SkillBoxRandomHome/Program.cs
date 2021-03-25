@@ -2,63 +2,66 @@
 
 namespace SkillBoxRandomHome
 {
+
     class Program
     {
+        ///<summary>Метод для вывода приветствия
+        ///</summary>
+        static void TextHyChange()
+        {
+            Console.Write("Привет!\n" +
+                      "Хочешь сыграть с Димси в игру да/нет? ");
+        }
+
+        /// <summary> Метод для вывода текущего значения числа и 
+        /// номера хода</summary>
+        static void NumberAndHod(int a, int b, string c, int d)
+        {
+            Console.WriteLine("Сейчас рандомное число =: {0}\t" +
+                              "Ход номер {1}\n", a, b);
+            Console.WriteLine("{0}, вводит число от 1...4: {1} ", c, d);
+        }
+
+        ///<summary> Метод для вывода сообщения о приветсвиии игроков и рандомного числа
+        ///</summary>
+        static void TextHy(string player, string bot, int number)
+        {
+            Console.WriteLine("Привет {0} и {1}", player, bot);
+            Console.WriteLine("Ваше случайное число:= {0}", number);
+        }
+
+        ///<summary> Метод для рассчета операций
+        ///</summary>
+        static int Operashion(int a, int b)
+        {
+            a -= b;
+            return a;
+        }
+
+        ///<summary> Метод для очистки консоли 
+        ///</summary>
+        static void Clear()
+        {
+            Console.Clear();
+        }
+
+        /// <summary> Метод ожидания чёрного окна </summary>
+        ///
+        static void Delay()
+        {
+            Console.ReadKey();
+        }
+
+        /// <summary> Метод для вывода строки об ошибке </summary>
+        /// 
+        static void TextOfError()
+        {
+            Console.WriteLine("Ошибка...");
+        }
+
         static void Main(string[] args)
         {
-            ///<summary>Метод для вывода приветствия
-            ///</summary>
-            static void TextHyChange()
-            {
-                Console.Write("Привет!\n" +
-                          "Хочешь сыграть с Димси в игру да/нет? ");
-            }
-
-            /// <summary> Метод для вывода текущего значения числа и 
-            /// номера хода</summary>
-            static void NumberAndHod(int a, int b, string c, int d)
-            {
-                Console.WriteLine("Сейчас рандомное число =: {0}\t" +
-                                  "Ход номер {1}\n", a, b);
-                Console.WriteLine("{0}, вводит число от 1...4: {1} ", c, d);
-            }
-
-            ///<summary> Метод для вывода сообщения о приветсвиии игроков и рандомного числа
-            ///</summary>
-            static void TextHy(string player, string bot, int number)
-            {
-                Console.WriteLine("Привет {0} и {1}", player, bot);
-                Console.WriteLine("Ваше случайное число:= {0}", number);
-            }
             
-            ///<summary> Метод для рассчета операций
-            ///</summary>
-            static int Operashion(int a,int b)
-            {
-                a -= b;
-                return a;
-            }
-
-            ///<summary> Метод для очистки консоли 
-            ///</summary>
-            static void Clear()
-            {
-                Console.Clear();
-            }
-
-            /// <summary> Метод ожидания чёрного окна </summary>
-            ///
-            static void Delay()
-            {
-                Console.ReadKey();
-            }
-
-            /// <summary> Метод для вывода строки об ошибке </summary>
-            /// 
-            static void TextOfError()
-            {
-                Console.WriteLine("Ошибка...");
-            }
             
             #region ТЗ
    
